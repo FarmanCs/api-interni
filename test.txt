@@ -1,0 +1,49 @@
+rest api
+
+get / user -- list all user
+
+get / user/1 - get the user with id 1
+
+post / creat user...
+
+patch / edit user..
+
+delete / delete user....
+
+
+//
+
+const express = require('express')
+
+const user = require('./MOCK_DATA.json')
+const app = express();
+const PORT = 8000;
+
+//Routs
+
+app.get('/api/user', (req, res) => {
+
+   return res.json(user);
+})
+app.get('/user', (req, res) => {
+   const html = `
+   <ul>
+      ${user.map((user) => <li>${user.first_name}</li>)}
+   </ul>
+   `
+   res.send(html);
+})
+
+app.listen(PORT, (req, res) => { console.log(`server started at port: ${PORT}`) })
+
+
+
+app.patch("/api/user:id", (req, res) => {
+
+   res.json("stat pending...")
+})
+
+app.delete("/api/user:id", (req, res) => {
+
+   res.json("stat pending...")
+})
